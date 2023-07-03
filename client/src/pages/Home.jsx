@@ -10,6 +10,8 @@ import {
   slideAnimation,
 } from "../config/motion";
 
+import { CustomButton } from "../components";
+
 import state from "../store";
 
 function Home() {
@@ -50,6 +52,13 @@ function Home() {
                 <br />
                 <strong>Make what you want!</strong>
               </p>
+
+              <CustomButton
+                type="filled"
+                title="Let's Start!"
+                handleClick={() => (state.intro = false)}
+                extraStyles="w-fit text-sm font-bold px-4 py-2.5"
+              />
             </motion.div>
           </motion.div>
         </motion.section>
