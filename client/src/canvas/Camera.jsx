@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useRef } from "react";
 
-const Camera = () => {
-  return (
-    <div>Camera</div>
-  )
-}
+import { useFrame } from "@react-three/fiber";
+import { easing } from "maath";
+import { useSnapshot } from "valtio";
 
-export default Camera
+import state from "../store";
+
+const Camera = ({ children }) => {
+  const group = useRef();
+  const snap = useSnapshot(state);
+  
+  let initialPosition = [-0.4, 0, 2];
+
+  return <group ref={group}>{children}</group>;
+};
+
+export default Camera;
