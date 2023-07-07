@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import { easing } from "maath";
 import { useFrame } from "@react-three/fiber";
@@ -14,147 +14,75 @@ import {
 import { useSnapshot } from "valtio";
 import state from "../store";
 
-// will turn into component later, will need to add geometry and material to mesh to interact with colour changer, also highlight the selected choice
-const Model = ({ url, onClick, scale }) => {
-  const gltf = useGLTF(url);
-  const modelRef = useRef();
-
-  return (
-    <group>
-      <mesh ref={modelRef} onClick={onClick} >
-        <primitive object={gltf.scene} scale={scale}  />
-      </mesh>
-    </group>
-  );
-};
-
 const Room = () => {
-  // old code for individual loading of models
-  // 
-  // 
-  // 
-  // const snap = useSnapshot(state);
-  // const reffed = useRef();
-
-  // const { nodes: deskNodes, materials: deskMaterials } = useGLTF("/Desk.glb");
-
-  // const { nodes: couchNodes, materials: couchMaterials } =
-  //   useGLTF("/Couch_Small.glb");
-
-  // const logoTexture = useTexture(snap.logoDecal);
-  // const fullTexture = useTexture(snap.fullDecal);
-
-  // console.log (deskMaterials)
-
-  // deskMaterials.Material.color.b=15
-  // deskMaterials.Material.color.g=15
-  // deskMaterials.Material.color.r=15
-
-  // const [selectedMesh, setSelectedMesh] = useState(null);
-  // const boxRef = useRef();
-  // const sphereRef = useRef();
-
-  // const meshRefs = useRef([]);
-
-  // const addMeshRef = (meshRef) => {
-  //   if (meshRef && !meshRefs.current.includes(meshRef)) {
-  //     meshRefs.current.push(meshRef);
-  //   }
-  // };
-
-  // const handleMeshClick = (meshRef) => {
-  //   setSelectedMesh(selectedMesh === meshRef ? null : meshRef);
-  // };
-  //
-  //
-  //
-  // current code for mapping over multiple models
-  const models = [
-    { url: "/Desk.glb", scale: 5 },
-    { url: "/Couch_Small.glb", scale: 1  },
-    // Add more models as needed
-  ];
-
+  const snap = useSnapshot(state);
   const [selectedModel, setSelectedModel] = useState(null);
   const modelRefs = useRef([]);
 
-
-  const handleModelClick = (modelRef) => {
-    setSelectedModel(selectedModel === modelRef ? null : modelRef);
+  const handleModelClick = (modelRef, index) => {
+    setSelectedModel(modelRef);
   };
 
-  const addModelRef = (modelRef) => {
-    if (modelRef && !modelRefs.current.includes(modelRef)) {
-      modelRefs.current.push(modelRef);
-    }
-  };
+  // nodes and materials for models, done this way as each model has dif number of geometries and materials
+  const { nodes: deskNodes, materials: deskMaterials } = useGLTF("/Desk.glb");
+
+  const { nodes: couchNodes, materials: couchMaterials } =
+    useGLTF("/Couch_Small.glb");
+
+  // texture application?
+  const logoTexture = useTexture(snap.logoDecal);
+  const fullTexture = useTexture(snap.fullDecal);
+
+  // deskMaterials.Material.emissive.set(0x000000)
 
   return (
     <group>
-      {/* testing code of applying geometry and material */}
-      {/* <TransformControls>
-        <mesh
-          geometry={deskNodes.Desk.geometry}
-          material={deskMaterials.Material}
-          scale={150}
-        />
-      </TransformControls> */}
-
-      {/* simple individual moving of models with seperate userefs */}
-
-      {/* <TransformControls
-        ref={boxRef}
-        enabled={selectedMesh === boxRef.current}
-        showX={selectedMesh === boxRef.current}
-        showY={selectedMesh === boxRef.current}
-        showZ={selectedMesh === boxRef.current}
+      {/* desk */}
+      <TransformControls
+        enabled={selectedModel === modelRefs.current[0]}
+        showX={selectedModel === modelRefs.current[0]}
+        showY={selectedModel === modelRefs.current[0]}
+        showZ={selectedModel === modelRefs.current[0]}
       >
-
+        <group scale={150} position={[2,0,2]}>
+          <mesh
+            geometry={deskNodes.Desk.geometry}
+            material={deskMaterials.Material}
+            onClick={() => handleModelClick(modelRefs.current[0], 0)}
+            dispose={null}
+            ref={(ref) => (modelRefs.current[0] = ref)}
+          />
+        </group>
       </TransformControls>
 
+      {/* couch */}
       <TransformControls
-        ref={sphereRef}
-        enabled={selectedMesh === sphereRef.current}
-        showX={selectedMesh === sphereRef.current}
-        showY={selectedMesh === sphereRef.current}
-        showZ={selectedMesh === sphereRef.current}
+        enabled={selectedModel === modelRefs.current[1]}
+        showX={selectedModel === modelRefs.current[1]}
+        showY={selectedModel === modelRefs.current[1]}
+        showZ={selectedModel === modelRefs.current[1]}
       >
-        <Sphere onClick={() => handleMeshClick(sphereRef.current)}>
-          <meshStandardMaterial attach="material" color="blue" />
-        </Sphere>
-      </TransformControls> */}
-
-      {/* old code for individual moving of models */}
-
-      {/* {models.map((model, index) => (
-        <TransformControls
-          key={index}
-          ref={(ref) => addModelRef(ref)}
-          enabled={selectedModel === modelRefs.current[index]?.current}
-          showX={selectedModel === modelRefs.current[index]?.current}
-          showY={selectedModel === modelRefs.current[index]?.current}
-          showZ={selectedModel === modelRefs.current[index]?.current}
+        <group
+          rotation-x={Math.PI * 1.5}
+          scale={150}
+          ref={(ref) => {
+            modelRefs.current[1] = ref;
+          }}
         >
-          <Model
-            url={model.url}
-            onClick={() => handleModelClick(modelRefs.current[index]?.current)}
-            scale={model.scale}
+          <mesh
+            geometry={couchNodes.Couch_Small2_1.geometry}
+            material={couchMaterials.Couch_BeigeDark}
+            onClick={() => handleModelClick(modelRefs.current[1], 1)}
+            dispose={null}
           />
-        </TransformControls>
-      ))} */}
-
-      {models.map((model, index) => (
-        <TransformControls
-          key={index}
-          ref={(ref) => (modelRefs.current[index] = ref)}
-          enabled={selectedModel === index}
-          showX={selectedModel === index}
-          showY={selectedModel === index}
-          showZ={selectedModel === index}
-        >
-          <Model url={model.url} onClick={() => handleModelClick(index)} scale={model.scale} />
-        </TransformControls>
-      ))}
+          <mesh
+            geometry={couchNodes.Couch_Small2_2.geometry}
+            material={couchMaterials.Couch_BeigeDark}
+            onClick={() => handleModelClick(modelRefs.current[1], 1)}
+            dispose={null}
+          />
+        </group>
+      </TransformControls>
     </group>
   );
 };
