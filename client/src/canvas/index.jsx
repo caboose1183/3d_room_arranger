@@ -14,17 +14,23 @@ const CanvasArea = () => {
   const snap = useSnapshot(state);
 
   return (
-    <Canvas>
+    <Canvas
+      shadows
+      camera={{
+        fov: 75,
+        near: 0.1,
+        far: 200,
+        position: [3.5, 3, 6],
+      }}
+    >
+      <color attach="background" args={["#ad9baa"]} />
       <OrbitControls makeDefault />
       <ambientLight intensity={0.5} />
       <Environment preset="city" />
 
-      {/* <Camera> */}
       {/* <Backsplash /> */}
-      {/* <Center> */}
+
       <Room />
-      {/* </Center> */}
-      {/* </Camera> */}
     </Canvas>
   );
 };
