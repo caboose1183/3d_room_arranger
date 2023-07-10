@@ -1,18 +1,18 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 
-import { easing } from "maath";
 import { useFrame } from "@react-three/fiber";
 import {
   Decal,
   TransformControls,
-  useGLTF,
   useTexture,
   Box,
-  Sphere,
 } from "@react-three/drei";
 
 import { useSnapshot } from "valtio";
 import state from "../store";
+
+import Desk from "./furniture/Desk";
+import Couch from "./furniture/Couch";
 
 const Room = () => {
   const snap = useSnapshot(state);
@@ -21,16 +21,7 @@ const Room = () => {
 
   const handleModelClick = (modelRef, index) => {
     setSelectedModel(modelRef);
-
-    console.log(modelRef);
   };
-
-  // nodes and materials for models, done this way as each model has dif number of geometries and materials
-  const { nodes: deskNodes, materials: deskMaterials } = useGLTF("/Desk.glb");
-
-  const { nodes: couchNodes, materials: couchMaterials } =
-    useGLTF("/Couch_Small.glb");
-
   // colour easing
 
   // useFrame((state, delta) => {
@@ -61,26 +52,11 @@ const Room = () => {
         size={0.5}
         position={[2, 0, 2]}
       >
-        <group scale={150} castShadow>
-          <mesh
-            geometry={deskNodes.Desk.geometry}
-            material={deskMaterials.Material}
-            onClick={() => handleModelClick(modelRefs.current[0], 0)}
-            dispose={null}
-            ref={(ref) => (modelRefs.current[0] = ref)}
-          >
-            {snap.isFullTexture && (
-              // <Decal mesh={modelRefs.current[0]}>
-              //   <meshBasicMaterial
-              //     map={fullTexture}
-              //     polygonOffset
-              //     polygonOffsetFactor={-1}
-              //   />
-              // </Decal>
-              <meshBasicMaterial attach="material" map={fullTexture} />
-            )}
-          </mesh>
-        </group>
+        <Desk
+          onClick={() => handleModelClick(modelRefs.current[0], 0)}
+          innerRef={(ref) => (modelRefs.current[0] = ref)}
+          scaleModifier={1}
+        />
       </TransformControls>
 
       {/* couch */}
@@ -91,25 +67,11 @@ const Room = () => {
         showZ={selectedModel === modelRefs.current[1]}
         size={0.5}
       >
-        <group
-          rotation-x={Math.PI * 1.5}
-          scale={150}
-          ref={(ref) => (modelRefs.current[1] = ref)}
-          castShadow
-        >
-          <mesh
-            geometry={couchNodes.Couch_Small2_1.geometry}
-            material={couchMaterials.Couch_BeigeDark}
-            onClick={() => handleModelClick(modelRefs.current[1], 1)}
-            dispose={null}
-          />
-          <mesh
-            geometry={couchNodes.Couch_Small2_2.geometry}
-            material={couchMaterials.Couch_BeigeDark}
-            onClick={() => handleModelClick(modelRefs.current[1], 1)}
-            dispose={null}
-          />
-        </group>
+        <Couch
+          scaleModifier={1}
+          onClick={() => handleModelClick(modelRefs.current[1], 1)}
+          innerRef={(ref) => (modelRefs.current[1] = ref)}
+        />
       </TransformControls>
     </group>
   );
