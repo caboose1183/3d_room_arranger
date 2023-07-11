@@ -42,9 +42,8 @@ export default function BlankFrame(props) {
         material={materials.mat24}
         rotation-y={Math.PI}
       >
-        <planeGeometry args={[0.5, 0.8]} />
-        <meshBasicMaterial />
-        <Decal map={texture} scale={0.5} />
+        <planeGeometry args={[0.5, 0.85]} />
+        <meshBasicMaterial map={texture} />
       </mesh>
       <mesh
         name="Node-Mesh_4"

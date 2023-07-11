@@ -1,0 +1,103 @@
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+
+export default function Shelf(props) {
+  const { nodes, materials } = useGLTF("/Shelf.glb");
+  return (
+    <group {...props} dispose={null} ref={props.innerRef}>
+      <mesh
+        name="group252943910"
+        castShadow
+        receiveShadow
+        geometry={nodes.group252943910.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group530080379"
+        castShadow
+        receiveShadow
+        geometry={nodes.group530080379.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group921275821"
+        castShadow
+        receiveShadow
+        geometry={nodes.group921275821.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group431821521"
+        castShadow
+        receiveShadow
+        geometry={nodes.group431821521.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group659176328"
+        castShadow
+        receiveShadow
+        geometry={nodes.group659176328.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group1808194429"
+        castShadow
+        receiveShadow
+        geometry={nodes.group1808194429.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group174979704"
+        castShadow
+        receiveShadow
+        geometry={nodes.group174979704.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group890327909"
+        castShadow
+        receiveShadow
+        geometry={nodes.group890327909.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group1082046218"
+        castShadow
+        receiveShadow
+        geometry={nodes.group1082046218.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group555946532"
+        castShadow
+        receiveShadow
+        geometry={nodes.group555946532.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group1813242810"
+        castShadow
+        receiveShadow
+        geometry={nodes.group1813242810.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group1750653242"
+        castShadow
+        receiveShadow
+        geometry={nodes.group1750653242.geometry}
+        material={materials.mat23}
+      />
+      <mesh
+        name="group807391238"
+        castShadow
+        receiveShadow
+        geometry={nodes.group807391238.geometry}
+        material={materials.mat23}
+      />
+    </group>
+  );
+}
+
+useGLTF.preload("/Shelf.glb");

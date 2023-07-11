@@ -4,7 +4,7 @@ import { useGLTF } from "@react-three/drei";
 export default function OfficeChair(props) {
   const { nodes, materials } = useGLTF("/Office_Chair.glb");
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={props.innerRef}>
       <group name="OfficeChair" rotation={[-Math.PI / 2, 0, 0]} scale={100}>
         <mesh
           name="OfficeChair_1"
