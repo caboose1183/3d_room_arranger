@@ -7,7 +7,6 @@ export default function FloorLamp(props) {
     <group
       {...props}
       dispose={null}
-      scale={props.scaleModifier}
       ref={props.innerRef}
     >
       <group name="Light_Floor1" rotation={[-Math.PI / 2, 0, 0]} scale={100}>

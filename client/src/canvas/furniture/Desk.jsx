@@ -7,7 +7,6 @@ export default function Desk(props) {
     <group
       {...props}
       dispose={null}
-      scale={props.scaleModifier}
       ref={props.innerRef}
     >
       <group
