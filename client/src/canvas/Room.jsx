@@ -8,16 +8,22 @@ import { useSnapshot } from "valtio";
 import state from "../store";
 
 import Desk from "./furniture/Desk";
-import Couch from "./furniture/Couch";
 import Floor from "./floor/Floor";
+import FloorLamp from "./furniture/FloorLamp";
 
 const Room = () => {
   const snap = useSnapshot(state);
   const [selectedModel, setSelectedModel] = useState(null);
   const modelRefs = useRef([]);
 
+
+  // handles left click select and right click deselect
   const handleModelClick = (modelRef, index) => {
     setSelectedModel(modelRef);
+  };
+
+  const handleModelRightClick = () => {
+    setSelectedModel(null);
   };
   // colour easing
 
@@ -48,68 +54,7 @@ const Room = () => {
   const stateString = JSON.stringify(snap);
   return (
     <group key={stateString}>
-      {/* top floors */}
-      <Floor
-        scaleModifier={1}
-        position={[-3.85, 0, 0]}
-        rotation-y={Math.PI * 1}
-      />
-      <Floor scaleModifier={1} position={[0, 0, 0]} rotation-y={Math.PI * 1} />
-      <Floor
-        scaleModifier={1}
-        position={[3.9, 0, 0]}
-        rotation-y={Math.PI * 1}
-      />
-      <Floor
-        scaleModifier={1}
-        position={[7.8, 0, 0]}
-        rotation-y={Math.PI * 1}
-      />
-
-      {/* middle floors */}
-      <Floor
-        scaleModifier={1}
-        position={[-3.86, 0, 3.63]}
-        rotation-y={Math.PI * 1}
-      />
-      <Floor
-        scaleModifier={1}
-        position={[0, 0, 3.63]}
-        rotation-y={Math.PI * 1}
-      />
-      <Floor
-        scaleModifier={1}
-        position={[3.94, 0, 3.63]}
-        rotation-y={Math.PI * 1}
-      />
-      <Floor
-        scaleModifier={1}
-        position={[7.88, 0, 3.63]}
-        rotation-y={Math.PI * 1}
-      />
-
-      {/* bottom floors */}
-
-      <Floor
-        scaleModifier={1}
-        position={[-3.86, 0, 7.25]}
-        rotation-y={Math.PI * 1}
-      />
-      <Floor
-        scaleModifier={1}
-        position={[-0.1, 0, 7.25]}
-        rotation-y={Math.PI * 1}
-      />
-      <Floor
-        scaleModifier={1}
-        position={[3.84, 0, 7.25]}
-        rotation-y={Math.PI * 1}
-      />
-      <Floor
-        scaleModifier={1}
-        position={[7.78, 0, 7.25]}
-        rotation-y={Math.PI * 1}
-      />
+      <Floor />
 
       {/* left wall */}
       <mesh
@@ -136,25 +81,49 @@ const Room = () => {
         showY={selectedModel === modelRefs.current[0]}
         showZ={selectedModel === modelRefs.current[0]}
         size={0.5}
-        position={[2, 0, 2]}
+        position-x={2}
+        position-z={-0.5}
       >
         <Desk
           onClick={() => handleModelClick(modelRefs.current[0], 0)}
+          onContextMenu={() => handleModelRightClick()}
           innerRef={(ref) => (modelRefs.current[0] = ref)}
-          scaleModifier={1}
+          scaleModifier={2}
+          position={[-1, 0, -12.5]}
+          rotation-y={Math.PI * 1}
         />
       </TransformControls>
 
       {/* couch */}
+      {/* <TransformControls
+        enabled={selectedModel === modelRefs.current[1]}
+        showX={selectedModel === modelRefs.current[1]}
+        showY={selectedModel === modelRefs.current[1]}
+        showZ={selectedModel === modelRefs.current[1]}
+        size={0.5}
+        position={[3, 0, 0]}
+      >
+        <Couch
+          scaleModifier={1}
+          onClick={() => handleModelClick(modelRefs.current[1], 1)}
+          innerRef={(ref) => (modelRefs.current[1] = ref)}
+        />
+      </TransformControls> */}
+
+      {/* scale={props.scaleModifier}
+      ref={props.innerRef} */}
+
+      {/* floor lamp */}
       <TransformControls
         enabled={selectedModel === modelRefs.current[1]}
         showX={selectedModel === modelRefs.current[1]}
         showY={selectedModel === modelRefs.current[1]}
         showZ={selectedModel === modelRefs.current[1]}
         size={0.5}
+        position={[-5, 0, -1]}
       >
-        <Couch
-          scaleModifier={1}
+        <FloorLamp
+          scaleModifier={2.8}
           onClick={() => handleModelClick(modelRefs.current[1], 1)}
           innerRef={(ref) => (modelRefs.current[1] = ref)}
         />

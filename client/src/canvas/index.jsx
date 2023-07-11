@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { Suspense, useRef } from "react";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, Center, OrbitControls } from "@react-three/drei";
+import { Environment, Center, OrbitControls, Loader } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 
 import state from "../store";
@@ -14,24 +14,30 @@ const CanvasArea = () => {
   const snap = useSnapshot(state);
 
   return (
-    <Canvas
-      shadows
-      camera={{
-        fov: 75,
-        near: 0.1,
-        far: 200,
-        position: [3.5, 3, 6],
-      }}
-    >
-      <color attach="background" args={["#ad9baa"]} />
-      <OrbitControls makeDefault />
-      <ambientLight intensity={0.5} />
-      <Environment preset="city" />
+    <>
+      <Canvas
+        shadows
+        camera={{
+          fov: 75,
+          near: 0.1,
+          far: 200,
+          position: [7.5, 5, 15],
+        }}
+      >
+        <color attach="background" args={["#ad9baa"]} />
+        <OrbitControls makeDefault />
+        <ambientLight intensity={0.5} />
+        <Environment preset="city" />
 
-      {/* <Backsplash /> */}
+        {/* <Backsplash /> */}
 
-      <Room />
-    </Canvas>
+        <Suspense fallback={null}>
+          <Room />
+        </Suspense>
+      </Canvas>
+
+      <Loader />
+    </>
   );
 };
 

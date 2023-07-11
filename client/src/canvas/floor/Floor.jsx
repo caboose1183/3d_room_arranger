@@ -1,171 +1,74 @@
-import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import React from "react";
 
-export default function Floor(props) {
-  const { nodes, materials } = useGLTF("/Wood_Floor.glb");
+import FloorModel from "./FloorModel";
+
+function Floor() {
   return (
-    <group
-      {...props}
-      dispose={null}
-      scale={props.scaleModifier}
-      position={props.position}
-    >
-      <mesh
-        name="mesh2124208635"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh2124208635.geometry}
-        material={materials.mat19}
+    <group>
+      {/* top floors */}
+      <FloorModel
+        scaleModifier={1}
+        position={[-3.85, 0, 0]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh2124208635_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh2124208635_1.geometry}
-        material={materials.mat20}
+      <FloorModel scaleModifier={1} position={[0, 0, 0]} rotation-y={Math.PI * 1} />
+      <FloorModel
+        scaleModifier={1}
+        position={[3.9, 0, 0]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh1395910603"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1395910603.geometry}
-        material={materials.mat20}
+      <FloorModel
+        scaleModifier={1}
+        position={[7.8, 0, 0]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh1395910603_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1395910603_1.geometry}
-        material={materials.mat19}
+
+      {/* middle floors */}
+      <FloorModel
+        scaleModifier={1}
+        position={[-3.86, 0, 3.63]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh428381769"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh428381769.geometry}
-        material={materials.mat20}
+      <FloorModel
+        scaleModifier={1}
+        position={[0, 0, 3.63]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh428381769_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh428381769_1.geometry}
-        material={materials.mat19}
+      <FloorModel
+        scaleModifier={1}
+        position={[3.94, 0, 3.63]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh1941367129"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1941367129.geometry}
-        material={materials.mat20}
+      <FloorModel
+        scaleModifier={1}
+        position={[7.8, 0, 3.63]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh1941367129_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1941367129_1.geometry}
-        material={materials.mat19}
+
+      {/* bottom floors */}
+
+      <FloorModel
+        scaleModifier={1}
+        position={[-3.86, 0, 7.25]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh586405494"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh586405494.geometry}
-        material={materials.mat20}
+      <FloorModel
+        scaleModifier={1}
+        position={[-0.1, 0, 7.25]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh586405494_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh586405494_1.geometry}
-        material={materials.mat19}
+      <FloorModel
+        scaleModifier={1}
+        position={[3.84, 0, 7.25]}
+        rotation-y={Math.PI * 1}
       />
-      <mesh
-        name="mesh1205836072"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1205836072.geometry}
-        material={materials.mat20}
-      />
-      <mesh
-        name="mesh1205836072_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1205836072_1.geometry}
-        material={materials.mat19}
-      />
-      <mesh
-        name="mesh1697498613"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1697498613.geometry}
-        material={materials.mat20}
-      />
-      <mesh
-        name="mesh1697498613_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1697498613_1.geometry}
-        material={materials.mat19}
-      />
-      <mesh
-        name="mesh326288606"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh326288606.geometry}
-        material={materials.mat20}
-      />
-      <mesh
-        name="mesh326288606_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh326288606_1.geometry}
-        material={materials.mat19}
-      />
-      <mesh
-        name="mesh176244983"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh176244983.geometry}
-        material={materials.mat20}
-      />
-      <mesh
-        name="mesh176244983_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh176244983_1.geometry}
-        material={materials.mat19}
-      />
-      <mesh
-        name="mesh1745354410"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1745354410.geometry}
-        material={materials.mat20}
-      />
-      <mesh
-        name="mesh1745354410_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1745354410_1.geometry}
-        material={materials.mat19}
-      />
-      <mesh
-        name="mesh156735920"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh156735920.geometry}
-        material={materials.mat20}
-      />
-      <mesh
-        name="mesh156735920_1"
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh156735920_1.geometry}
-        material={materials.mat19}
+      <FloorModel
+        scaleModifier={1}
+        position={[7.78, 0, 7.25]}
+        rotation-y={Math.PI * 1}
       />
     </group>
   );
 }
 
-useGLTF.preload("/Wood_Floor.glb");
+export default Floor;
