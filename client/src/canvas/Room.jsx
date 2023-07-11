@@ -15,6 +15,7 @@ import OfficeChair from "./furniture/OfficeChair";
 import WallArt1 from "./decoration/WallArt1";
 import WallArt4 from "./decoration/WallArt4";
 import WallArt7 from "./decoration/WallArt7";
+import BlankFrame from "./decoration/BlankFrame"
 
 const Room = () => {
   const snap = useSnapshot(state);
@@ -169,20 +170,38 @@ const Room = () => {
         />
       </TransformControls>
 
-      {/* desk chair */}
+      {/* blank frame*/}
       <TransformControls
         enabled={selectedModel === modelRefs.current[5]}
         showX={selectedModel === modelRefs.current[5]}
         showY={selectedModel === modelRefs.current[5]}
         showZ={selectedModel === modelRefs.current[5]}
         size={0.5}
+        position={[6.5,2.8,-1.72]}
+      >
+        <BlankFrame
+          scale={3}
+          onClick={() => handleModelClick(modelRefs.current[5], 5)}
+          onContextMenu={() => handleModelRightClick()}
+          innerRef={(ref) => (modelRefs.current[5] = ref)}
+          rotation-y={Math.PI}
+        />
+      </TransformControls>
+
+      {/* desk chair */}
+      <TransformControls
+        enabled={selectedModel === modelRefs.current[6]}
+        showX={selectedModel === modelRefs.current[6]}
+        showY={selectedModel === modelRefs.current[6]}
+        showZ={selectedModel === modelRefs.current[6]}
+        size={0.5}
         position={[1.7,0,2]}
       >
         <OfficeChair
           scale={2.5}
-          onClick={() => handleModelClick(modelRefs.current[5], 5)}
+          onClick={() => handleModelClick(modelRefs.current[6], 6)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[5] = ref)}
+          innerRef={(ref) => (modelRefs.current[6] = ref)}
           rotation-y={Math.PI}
         />
       </TransformControls>
