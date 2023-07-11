@@ -40,10 +40,15 @@ export default function BlankFrame(props) {
         receiveShadow
         geometry={nodes["Node-Mesh_3"].geometry}
         material={materials.mat24}
-        rotation-y={Math.PI}
+        rotation-y={snap.isFullTexture ? Math.PI : 0}
       >
-        <planeGeometry args={[0.5, 0.85]} />
-        <meshBasicMaterial map={texture} />
+        {snap.isFullTexture && (
+          <>
+            <planeGeometry args={[0.5, 0.85]} />
+            <meshBasicMaterial />
+            <Decal map={texture} scale={0.5} />
+          </>
+        )}
       </mesh>
       <mesh
         name="Node-Mesh_4"

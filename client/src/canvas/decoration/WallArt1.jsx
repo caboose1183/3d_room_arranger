@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture, Decal } from "@react-three/drei";
 
 import { useSnapshot } from "valtio";
 import state from "../../store";
@@ -60,7 +60,16 @@ export default function WallArt1(props) {
         receiveShadow
         geometry={nodes["Node-Mesh_6"].geometry}
         material={materials.mat24}
-      />
+        rotation-y={snap.isFullTexture ? Math.PI : 0}
+      >
+        {snap.isFullTexture && (
+          <>
+            <planeGeometry args={[0.5, 0.85]} />
+            <meshBasicMaterial />
+            <Decal map={texture} scale={0.5} />
+          </>
+        )}
+      </mesh>
       <mesh
         name="Node-Mesh_7"
         castShadow

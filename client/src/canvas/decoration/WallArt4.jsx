@@ -1,14 +1,16 @@
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Decal, useTexture } from "@react-three/drei";
+
+import { useSnapshot } from "valtio";
+import state from "../../store";
 
 export default function WallArt4(props) {
+  const snap = useSnapshot(state);
+
+  const texture = useTexture(snap.fullDecal);
   const { nodes, materials } = useGLTF("/WallArt4.glb");
   return (
-    <group
-      {...props}
-      dispose={null}
-      ref={props.innerRef}
-    >
+    <group {...props} dispose={null} ref={props.innerRef}>
       <mesh
         name="Node-Mesh"
         castShadow
@@ -36,7 +38,16 @@ export default function WallArt4(props) {
         receiveShadow
         geometry={nodes["Node-Mesh_3"].geometry}
         material={materials.mat24}
-      />
+        rotation-y={snap.isFullTexture ? Math.PI : 0}
+      >
+        {snap.isFullTexture && (
+          <>
+            <planeGeometry args={[0.5, 0.85]} />
+            <meshBasicMaterial />
+            <Decal map={texture} scale={0.5} />
+          </>
+        )}
+      </mesh>
       <mesh
         name="Node-Mesh_4"
         castShadow

@@ -1,14 +1,16 @@
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useTexture, Decal } from "@react-three/drei";
+
+import { useSnapshot } from "valtio";
+import state from "../../store";
 
 export default function WallArt7(props) {
+  const snap = useSnapshot(state);
+
+  const texture = useTexture(snap.fullDecal);
   const { nodes, materials } = useGLTF("/WallArt7.glb");
   return (
-    <group
-      {...props}
-      dispose={null}
-      ref={props.innerRef}
-    >
+    <group {...props} dispose={null} ref={props.innerRef}>
       <mesh
         name="Node-Mesh"
         castShadow
@@ -50,7 +52,16 @@ export default function WallArt7(props) {
         receiveShadow
         geometry={nodes["Node-Mesh_5"].geometry}
         material={materials.mat24}
-      />
+        rotation-y={snap.isFullTexture ? Math.PI : 0}
+      >
+        {snap.isFullTexture && (
+          <>
+            <planeGeometry args={[0.5, 0.85]} />
+            <meshBasicMaterial />
+            <Decal map={texture} scale={0.5} />
+          </>
+        )}
+      </mesh>
       <mesh
         name="Node-Mesh_6"
         castShadow
