@@ -46,10 +46,6 @@ const Room = () => {
   //   easing.dampC(couchMaterials.Couch_BeigeDark.color, snap.color, 0.25, delta);
   // });
 
-  // texture application?
-  const logoTexture = useTexture(snap.logoDecal);
-  const fullTexture = useTexture(snap.fullDecal);
-
   // const wheel = useTexture("./colour_wheel.jpg");
 
   // deskMaterials.Material.emissive.set(0x000000)

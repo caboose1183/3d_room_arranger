@@ -57,8 +57,9 @@ export default function WallArt7(props) {
         {snap.isFullTexture && (
           <>
             <planeGeometry args={[0.5, 0.85]} />
-            <meshBasicMaterial />
-            <Decal map={texture} scale={0.5} />
+            <Decal position-z={0.01}>
+              <meshBasicMaterial map={texture} />
+            </Decal>
           </>
         )}
       </mesh>
