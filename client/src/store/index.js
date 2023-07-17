@@ -1,11 +1,11 @@
 import { proxy } from "valtio";
 
 const state = proxy({
-  intro: true,
+  intro: false,
   selectedFurniture: null,
   transformMode: null,
   color: "#0076b6",
-  isFullTexture: false,
+  isFullTexture: true,
   fullDecal: "./threejs.png",
 
 });
