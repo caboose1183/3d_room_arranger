@@ -89,7 +89,7 @@ function RoomEdit() {
           </motion.div>
 
           {/* bottom texture type */}
-          <motion.div
+          {/* <motion.div
             {...slideAnimation("up")}
             className="absolute z-10  w-full flex flex-wrap justify-center items-center gap-4 bottom-5 right-0 left-0"
           >
@@ -105,7 +105,7 @@ function RoomEdit() {
                 }}
               />
             ))}
-          </motion.div>
+          </motion.div> */}
         </>
       )}
     </AnimatePresence>

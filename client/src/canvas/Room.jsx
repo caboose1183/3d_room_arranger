@@ -93,306 +93,325 @@ const Room = () => {
       {/* desk */}
       <PivotControls
         offset={[2, 0, -0.5]}
+        scale={1.5}
         disableAxes={selectedModel != modelRefs.current[0]}
         disableRotations={selectedModel != modelRefs.current[0]}
         disableSliders={selectedModel != modelRefs.current[0]}
+        visible={selectedModel === modelRefs.current[0]}
       >
         <Desk
           onClick={() => handleModelClick(modelRefs.current[0], 0)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[0] = ref)}
           scale={2}
           position={[1, 0, -13]}
           rotation-y={Math.PI * 1}
+          innerRef={(ref) => (modelRefs.current[0] = ref)}
         />
       </PivotControls>
 
       {/* floor lamp */}
       <PivotControls
-        scale={1}
+        scale={1.5}
         offset={[-5, 0, -1]}
         disableAxes={selectedModel != modelRefs.current[1]}
         disableRotations={selectedModel != modelRefs.current[1]}
         disableSliders={selectedModel != modelRefs.current[1]}
+        visible={selectedModel === modelRefs.current[1]}
       >
         <FloorLamp
-          scale={2.8}
           onClick={() => handleModelClick(modelRefs.current[1], 1)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[1] = ref)}
+          scale={2.8}
           position={[-5, 0, -1]}
+          innerRef={(ref) => (modelRefs.current[1] = ref)}
         />
       </PivotControls>
 
       {/* wall art 1 */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[2]}
-        showX={selectedModel === modelRefs.current[2]}
-        showY={selectedModel === modelRefs.current[2]}
-        showZ={selectedModel === modelRefs.current[2]}
-        size={0.5}
-        position={[-5.8, 2.8, 0.5]}
+      <PivotControls
+        offset={[-5.8, 2.8, 0.5]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[2]}
+        disableRotations={selectedModel != modelRefs.current[2]}
+        disableSliders={selectedModel != modelRefs.current[2]}
+        visible={selectedModel === modelRefs.current[2]}
       >
         <WallArt1
-          scale={3}
           onClick={() => handleModelClick(modelRefs.current[2], 2)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[2] = ref)}
+          scale={3}
+          position={[-5.8, 2.8, 0.5]}
           rotation-y={Math.PI * 1.5}
+          innerRef={(ref) => (modelRefs.current[2] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* wall art 4 */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[3]}
-        showX={selectedModel === modelRefs.current[3]}
-        showY={selectedModel === modelRefs.current[3]}
-        showZ={selectedModel === modelRefs.current[3]}
-        size={0.5}
-        position={[-5.8, 2.8, 2.5]}
+      <PivotControls
+        offset={[-5.8, 2.8, 2.5]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[3]}
+        disableRotations={selectedModel != modelRefs.current[3]}
+        disableSliders={selectedModel != modelRefs.current[3]}
+        visible={selectedModel === modelRefs.current[3]}
       >
         <WallArt4
-          scale={3}
           onClick={() => handleModelClick(modelRefs.current[3], 3)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[3] = ref)}
+          scale={3}
+          position={[-5.8, 2.8, 2.5]}
           rotation-y={Math.PI * 1.5}
+          innerRef={(ref) => (modelRefs.current[3] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* wall art 7 */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[4]}
-        showX={selectedModel === modelRefs.current[4]}
-        showY={selectedModel === modelRefs.current[4]}
-        showZ={selectedModel === modelRefs.current[4]}
-        size={0.5}
-        position={[-5.8, 2.8, 4.5]}
+      <PivotControls
+        offset={[-5.8, 2.8, 4.5]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[4]}
+        disableRotations={selectedModel != modelRefs.current[4]}
+        disableSliders={selectedModel != modelRefs.current[4]}
+        visible={selectedModel === modelRefs.current[4]}
       >
         <WallArt7
-          scale={3}
           onClick={() => handleModelClick(modelRefs.current[4], 4)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[4] = ref)}
+          scale={3}
+          position={[-5.8, 2.8, 4.5]}
           rotation-y={Math.PI * 1.5}
+          innerRef={(ref) => (modelRefs.current[4] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* blank frame*/}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[5]}
-        showX={selectedModel === modelRefs.current[5]}
-        showY={selectedModel === modelRefs.current[5]}
-        showZ={selectedModel === modelRefs.current[5]}
-        size={0.5}
-        position={[-5.8, 2.8, 6.5]}
+      <PivotControls
+        offset={[-5.8, 2.8, 6.5]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[5]}
+        disableRotations={selectedModel != modelRefs.current[5]}
+        disableSliders={selectedModel != modelRefs.current[5]}
+        visible={selectedModel === modelRefs.current[5]}
       >
         <BlankFrame
-          scale={3}
           onClick={() => handleModelClick(modelRefs.current[5], 5)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[5] = ref)}
+          scale={3}
+          position={[-5.8, 2.8, 6.5]}
           rotation-y={Math.PI * 1.5}
+          innerRef={(ref) => (modelRefs.current[5] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* desk chair */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[6]}
-        showX={selectedModel === modelRefs.current[6]}
-        showY={selectedModel === modelRefs.current[6]}
-        showZ={selectedModel === modelRefs.current[6]}
-        size={0.5}
-        position={[1.7, 0, 2]}
+      <PivotControls
+        offset={[1.7, 0, 2]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[6]}
+        disableRotations={selectedModel != modelRefs.current[6]}
+        disableSliders={selectedModel != modelRefs.current[6]}
+        visible={selectedModel === modelRefs.current[6]}
       >
         <OfficeChair
-          scale={2.5}
           onClick={() => handleModelClick(modelRefs.current[6], 6)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[6] = ref)}
+          scale={2.5}
+          position={[1.7, 0, 2]}
           rotation-y={Math.PI}
+          innerRef={(ref) => (modelRefs.current[6] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* shelf */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[7]}
-        showX={selectedModel === modelRefs.current[7]}
-        showY={selectedModel === modelRefs.current[7]}
-        showZ={selectedModel === modelRefs.current[7]}
-        size={0.5}
-        position={[-2.7, 1.55, -1]}
+      <PivotControls
+        offset={[-2.7, 0, -1]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[7]}
+        disableRotations={selectedModel != modelRefs.current[7]}
+        disableSliders={selectedModel != modelRefs.current[7]}
+        visible={selectedModel === modelRefs.current[7]}
       >
         <Shelf
-          scale={1.8}
           onClick={() => handleModelClick(modelRefs.current[7], 7)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[7] = ref)}
+          scale={1.8}
+          position={[-2.7, 1.55, -1]}
           rotation-y={Math.PI * 0.5}
+          innerRef={(ref) => (modelRefs.current[7] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* gundam */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[8]}
-        showX={selectedModel === modelRefs.current[8]}
-        showY={selectedModel === modelRefs.current[8]}
-        showZ={selectedModel === modelRefs.current[8]}
-        size={0.5}
-        position={[-2.1, 2.5, -1]}
+      <PivotControls
+        offset={[-2.1, 1.9, -1]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[8]}
+        disableRotations={selectedModel != modelRefs.current[8]}
+        disableSliders={selectedModel != modelRefs.current[8]}
+        visible={selectedModel === modelRefs.current[8]}
       >
         <Gundam
-          scale={0.5}
           onClick={() => handleModelClick(modelRefs.current[8], 8)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[8] = ref)}
+          scale={0.5}
           rotation-y={Math.PI}
+          position={[-2.1, 2.5, -1]}
+          innerRef={(ref) => (modelRefs.current[8] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* trophy */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[9]}
-        showX={selectedModel === modelRefs.current[9]}
-        showY={selectedModel === modelRefs.current[9]}
-        showZ={selectedModel === modelRefs.current[9]}
-        size={0.5}
-        position={[-3.9, 3.4, -1]}
+      <PivotControls
+        offset={[-3.9, 3.4, -1]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[9]}
+        disableRotations={selectedModel != modelRefs.current[9]}
+        disableSliders={selectedModel != modelRefs.current[9]}
+        visible={selectedModel === modelRefs.current[9]}
       >
         <Trophy
-          scale={0.05}
           onClick={() => handleModelClick(modelRefs.current[9], 9)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[9] = ref)}
+          scale={0.05}
+          position={[-3.9, 3.4, -1]}
           rotation-y={Math.PI * 0.5}
+          innerRef={(ref) => (modelRefs.current[9] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* clock */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[10]}
-        showX={selectedModel === modelRefs.current[10]}
-        showY={selectedModel === modelRefs.current[10]}
-        showZ={selectedModel === modelRefs.current[10]}
-        size={0.5}
-        position={[0, 3, -1.7]}
+      <PivotControls
+        offset={[0, 3.7, -1.7]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[10]}
+        disableRotations={selectedModel != modelRefs.current[10]}
+        disableSliders={selectedModel != modelRefs.current[10]}
+        visible={selectedModel === modelRefs.current[10]}
       >
         <Clock
-          scale={0.05}
           onClick={() => handleModelClick(modelRefs.current[10], 10)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[10] = ref)}
+          scale={0.05}
+          position={[0, 3, -1.7]}
           rotation-y={Math.PI * 1.5}
+          innerRef={(ref) => (modelRefs.current[10] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* TV */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[11]}
-        showX={selectedModel === modelRefs.current[11]}
-        showY={selectedModel === modelRefs.current[11]}
-        showZ={selectedModel === modelRefs.current[11]}
-        size={0.5}
-        position={[7.2, 2.8, -1.6]}
+      <PivotControls
+        offset={[6.8, 3, -1.6]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[11]}
+        disableRotations={selectedModel != modelRefs.current[11]}
+        disableSliders={selectedModel != modelRefs.current[11]}
+        visible={selectedModel === modelRefs.current[11]}
       >
         <TV
-          scale={1}
           onClick={() => handleModelClick(modelRefs.current[11], 11)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[11] = ref)}
+          scale={1}
+          position={[7.2, 2.8, -1.6]}
           rotation-y={Math.PI * 2}
+          innerRef={(ref) => (modelRefs.current[11] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* couch */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[12]}
-        showX={selectedModel === modelRefs.current[12]}
-        showY={selectedModel === modelRefs.current[12]}
-        showZ={selectedModel === modelRefs.current[12]}
-        size={0.5}
-        position={[7, 0.6, 5]}
+      <PivotControls
+        offset={[7, 0.6, 5]}
+        rotation={[0, Math.PI, 0]}
+        scale={3}
+        disableAxes={selectedModel != modelRefs.current[12]}
+        disableRotations={selectedModel != modelRefs.current[12]}
+        disableSliders={selectedModel != modelRefs.current[12]}
+        visible={selectedModel === modelRefs.current[12]}
       >
         <Couch
-          scale={3}
           onClick={() => handleModelClick(modelRefs.current[12], 12)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[12] = ref)}
+          scale={3}
+          position={[7, 0.6, 5]}
           rotation-y={Math.PI * 2}
+          innerRef={(ref) => (modelRefs.current[12] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* cofee table */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[13]}
-        showX={selectedModel === modelRefs.current[13]}
-        showY={selectedModel === modelRefs.current[13]}
-        showZ={selectedModel === modelRefs.current[13]}
-        size={0.5}
-        position={[7, 0.8, 2]}
+      <PivotControls
+        offset={[6.8, 0, 2]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[13]}
+        disableRotations={selectedModel != modelRefs.current[13]}
+        disableSliders={selectedModel != modelRefs.current[13]}
+        visible={selectedModel === modelRefs.current[13]}
       >
         <CoffeeTable
-          scale={2.3}
           onClick={() => handleModelClick(modelRefs.current[13], 13)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[13] = ref)}
+          scale={2.3}
+          position={[7, 0.8, 2]}
           rotation-y={Math.PI * 2}
+          innerRef={(ref) => (modelRefs.current[13] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* remote */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[14]}
-        showX={selectedModel === modelRefs.current[14]}
-        showY={selectedModel === modelRefs.current[14]}
-        showZ={selectedModel === modelRefs.current[14]}
-        size={0.5}
-        position={[6, 1.2, 2]}
+      <PivotControls
+        offset={[6, 1.2, 2]}
+        scale={1}
+        disableAxes={selectedModel != modelRefs.current[14]}
+        disableRotations={selectedModel != modelRefs.current[14]}
+        disableSliders={selectedModel != modelRefs.current[14]}
+        visible={selectedModel === modelRefs.current[14]}
       >
         <Remote
-          scale={0.008}
           onClick={() => handleModelClick(modelRefs.current[14], 14)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[14] = ref)}
+          scale={0.008}
+          position={[6, 1.2, 2]}
           rotation-y={Math.PI * 0.3}
+          innerRef={(ref) => (modelRefs.current[14] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* houseplant */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[15]}
-        showX={selectedModel === modelRefs.current[15]}
-        showY={selectedModel === modelRefs.current[15]}
-        showZ={selectedModel === modelRefs.current[15]}
-        size={0.5}
-        position={[-4.8, 0, 8]}
+      <PivotControls
+        offset={[-4.8, 0, 8]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[15]}
+        disableRotations={selectedModel != modelRefs.current[15]}
+        disableSliders={selectedModel != modelRefs.current[15]}
+        visible={selectedModel === modelRefs.current[15]}
       >
         <Houseplant
-          scale={2}
           onClick={() => handleModelClick(modelRefs.current[15], 15)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[15] = ref)}
+          scale={2}
+          position={[-4.8, 0, 8]}
           rotation-y={Math.PI * 0.3}
+          innerRef={(ref) => (modelRefs.current[15] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* shiba */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[16]}
-        showX={selectedModel === modelRefs.current[16]}
-        showY={selectedModel === modelRefs.current[16]}
-        showZ={selectedModel === modelRefs.current[16]}
-        size={0.5}
-        position={[-4, 0, 5]}
+      <PivotControls
+        offset={[-4, 0, 5]}
+        scale={1.5}
+        disableAxes={selectedModel != modelRefs.current[16]}
+        disableRotations={selectedModel != modelRefs.current[16]}
+        disableSliders={selectedModel != modelRefs.current[16]}
+        visible={selectedModel === modelRefs.current[16]}
       >
         <Shiba
-          scale={0.6}
           onClick={() => handleModelClick(modelRefs.current[16], 16)}
           onContextMenu={() => handleModelRightClick()}
-          innerRef={(ref) => (modelRefs.current[16] = ref)}
+          scale={0.6}
+          position={[-4, 0, 5]}
           rotation-y={Math.PI * 0.3}
+          innerRef={(ref) => (modelRefs.current[16] = ref)}
         />
-      </TransformControls>
+      </PivotControls>
     </group>
   );
 };
