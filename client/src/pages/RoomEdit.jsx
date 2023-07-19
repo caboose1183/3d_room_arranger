@@ -14,6 +14,8 @@ import {
   Tab,
 } from "../components";
 
+import { IconArrowsMove, IconRotateClockwise } from "@tabler/icons-react";
+
 export const EditorTabs = [
   {
     name: "colorpicker",
@@ -32,11 +34,11 @@ export const EditorTabs = [
 export const TransformTabs = [
   {
     name: "rotate",
-    icon: "",
+    icon: <IconRotateClockwise />,
   },
   {
     name: "translate",
-    icon: "",
+    icon: <IconArrowsMove />,
   },
 ];
 
@@ -92,7 +94,16 @@ function RoomEdit() {
             className="absolute z-10  w-full flex flex-wrap justify-center items-center gap-4 bottom-5 right-0 left-0"
           >
             {TransformTabs.map((tab) => (
-              <Tab key={tab.name} tab={tab} transformMode={null} isActive="" handleClick={() => {}} />
+              <Tab
+                key={tab.name}
+                tab={tab}
+                transformMode={null}
+                isTransformTab
+                isActive=""
+                handleClick={() => {
+                  
+                }}
+              />
             ))}
           </motion.div>
         </>

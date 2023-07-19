@@ -1,7 +1,13 @@
 import React, { useRef, useState } from "react";
 
 import * as THREE from "three";
-import { Decal, TransformControls, useTexture, Html } from "@react-three/drei";
+import {
+  Decal,
+  TransformControls,
+  useTexture,
+  Html,
+  PivotControls,
+} from "@react-three/drei";
 
 import { useSnapshot } from "valtio";
 import state from "../store";
@@ -85,41 +91,38 @@ const Room = () => {
       />
 
       {/* desk */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[0]}
-        showX={selectedModel === modelRefs.current[0]}
-        showY={selectedModel === modelRefs.current[0]}
-        showZ={selectedModel === modelRefs.current[0]}
-        size={0.5}
-        position-x={2}
-        position-z={-0.5}
+      <PivotControls
+        offset={[2, 0, -0.5]}
+        disableAxes={selectedModel != modelRefs.current[0]}
+        disableRotations={selectedModel != modelRefs.current[0]}
+        disableSliders={selectedModel != modelRefs.current[0]}
       >
         <Desk
           onClick={() => handleModelClick(modelRefs.current[0], 0)}
           onContextMenu={() => handleModelRightClick()}
           innerRef={(ref) => (modelRefs.current[0] = ref)}
           scale={2}
-          position={[-1, 0, -12.5]}
+          position={[1, 0, -13]}
           rotation-y={Math.PI * 1}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* floor lamp */}
-      <TransformControls
-        enabled={selectedModel === modelRefs.current[1]}
-        showX={selectedModel === modelRefs.current[1]}
-        showY={selectedModel === modelRefs.current[1]}
-        showZ={selectedModel === modelRefs.current[1]}
-        size={0.5}
-        position={[-5, 0, -1]}
+      <PivotControls
+        scale={1}
+        offset={[-5, 0, -1]}
+        disableAxes={selectedModel != modelRefs.current[1]}
+        disableRotations={selectedModel != modelRefs.current[1]}
+        disableSliders={selectedModel != modelRefs.current[1]}
       >
         <FloorLamp
           scale={2.8}
           onClick={() => handleModelClick(modelRefs.current[1], 1)}
           onContextMenu={() => handleModelRightClick()}
           innerRef={(ref) => (modelRefs.current[1] = ref)}
+          position={[-5, 0, -1]}
         />
-      </TransformControls>
+      </PivotControls>
 
       {/* wall art 1 */}
       <TransformControls
