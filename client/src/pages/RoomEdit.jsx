@@ -14,33 +14,12 @@ import {
   Tab,
 } from "../components";
 
-import { IconArrowsMove, IconRotateClockwise } from "@tabler/icons-react";
-
-export const EditorTabs = [
-  {
-    name: "colorpicker",
-    icon: "",
-  },
-  {
-    name: "filepicker",
-    icon: "",
-  },
-  {
-    name: "aipicker",
-    icon: "",
-  },
-];
-
-export const TransformTabs = [
-  {
-    name: "rotate",
-    icon: <IconRotateClockwise />,
-  },
-  {
-    name: "translate",
-    icon: <IconArrowsMove />,
-  },
-];
+import {
+  IconTexture,
+  IconWall,
+  IconRobot,
+  IconPhoto,
+} from "@tabler/icons-react";
 
 // export const DecalTypes = {
 //   logo: {
@@ -55,6 +34,28 @@ export const TransformTabs = [
 
 function RoomEdit() {
   const snap = useSnapshot(state);
+
+  const EditorTabs = [
+    {
+      name: "colorpicker",
+      icon: <IconWall size={50} color={snap.wallColor} />,
+    },
+    {
+      name: "filepicker",
+      icon: <IconPhoto size={50} color={snap.wallColor} />,
+    },
+    {
+      name: "aipicker",
+      icon: <IconRobot size={50} color={snap.wallColor} />,
+    },
+  ];
+
+  const TextureTabs = [
+    {
+      name: "fullTexture",
+      icon: <IconTexture size={50} color={snap.wallColor} />,
+    },
+  ];
 
   return (
     <AnimatePresence>
@@ -89,11 +90,11 @@ function RoomEdit() {
           </motion.div>
 
           {/* bottom texture type */}
-          {/* <motion.div
+          <motion.div
             {...slideAnimation("up")}
             className="absolute z-10  w-full flex flex-wrap justify-center items-center gap-4 bottom-5 right-0 left-0"
           >
-            {TransformTabs.map((tab) => (
+            {TextureTabs.map((tab) => (
               <Tab
                 key={tab.name}
                 tab={tab}
@@ -105,7 +106,7 @@ function RoomEdit() {
                 }}
               />
             ))}
-          </motion.div> */}
+          </motion.div>
         </>
       )}
     </AnimatePresence>

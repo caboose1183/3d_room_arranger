@@ -1,13 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import * as THREE from "three";
-import {
-  Decal,
-  TransformControls,
-  useTexture,
-  Html,
-  PivotControls,
-} from "@react-three/drei";
+import { PivotControls } from "@react-three/drei";
 
 import { useSnapshot } from "valtio";
 import state from "../store";
@@ -35,6 +29,7 @@ import Shiba from "./decoration/Shiba";
 const Room = () => {
   const snap = useSnapshot(state);
   const [selectedModel, setSelectedModel] = useState(null);
+
   const modelRefs = useRef([]);
 
   // handles left click select and right click deselect
@@ -62,12 +57,13 @@ const Room = () => {
   const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 
   const floor1Material = new THREE.MeshStandardMaterial({
-    color: "#2e302f",
+    color: snap.wallColor,
     metalness: 0,
     roughness: 1,
   });
 
   const stateString = JSON.stringify(snap);
+
   return (
     <group key={stateString}>
       <Floor />
@@ -93,7 +89,7 @@ const Room = () => {
       {/* desk */}
       <PivotControls
         offset={[2, 0, -0.5]}
-        scale={1.5}
+        scale={2}
         disableAxes={selectedModel != modelRefs.current[0]}
         disableRotations={selectedModel != modelRefs.current[0]}
         disableSliders={selectedModel != modelRefs.current[0]}

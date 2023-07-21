@@ -2,11 +2,11 @@ import React from "react";
 import { useSnapshot } from "valtio";
 import state from "../store";
 
-const Tab = ({ tab, isTransformTab, isActiveTab, handleClick }) => {
+const Tab = ({ tab, isTextureTab, isActiveTab, handleClick }) => {
   const snap = useSnapshot(state);
 
   const activeStyles =
-    isTransformTab && isActiveTab
+    isTextureTab && isActiveTab
       ? { backgroundColor: snap.color, opacity: 0.5 }
       : {
           backgroundColor: "transparent",
@@ -17,7 +17,7 @@ const Tab = ({ tab, isTransformTab, isActiveTab, handleClick }) => {
     <div
       key={tab.name}
       className={`flex justify-center items-center w-14 h-14 cursor-pointer select-none 
-      ${isTransformTab ? `glass rounded-full` : `rounded-4`}`}
+      ${isTextureTab ? `glass rounded-full` : `rounded-4`}`}
       onClick={handleClick}
     >
       {tab.icon}
