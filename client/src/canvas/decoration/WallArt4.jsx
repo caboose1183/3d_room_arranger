@@ -7,7 +7,7 @@ import state from "../../store";
 export default function WallArt4(props) {
   const snap = useSnapshot(state);
 
-  const texture = useTexture(snap.fullDecal);
+  const texture = useTexture(snap.artTexture4);
   const { nodes, materials } = useGLTF("/WallArt4.glb");
   return (
     <group {...props} dispose={null} ref={props.innerRef}>

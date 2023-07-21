@@ -26,8 +26,9 @@ import Remote from "./decoration/Remote";
 import Houseplant from "./decoration/Houseplant";
 import Shiba from "./decoration/Shiba";
 
-const Room = () => {
-  const snap = useSnapshot(state);
+const Room = ({}) => {
+  // const snap = useSnapshot(state);
+  const {wallColor} = state
   const [selectedModel, setSelectedModel] = useState(null);
 
   const modelRefs = useRef([]);
@@ -57,12 +58,12 @@ const Room = () => {
   const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 
   const floor1Material = new THREE.MeshStandardMaterial({
-    color: snap.wallColor,
+    color: wallColor,
     metalness: 0,
     roughness: 1,
   });
 
-  const stateString = JSON.stringify(snap);
+  const stateString = JSON.stringify(wallColor);
 
   return (
     <group key={stateString}>

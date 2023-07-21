@@ -7,7 +7,7 @@ import state from "../../store";
 export default function BlankFrame(props) {
   const snap = useSnapshot(state);
 
-  const texture = useTexture(snap.fullDecal);
+  const texture = useTexture(snap.artTextureBlank);
   const { nodes, materials } = useGLTF("/BlankFrame.glb");
   return (
     <group {...props} dispose={null} ref={props.innerRef}>

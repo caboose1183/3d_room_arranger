@@ -6,7 +6,10 @@ const state = proxy({
   color: "#0076b6",
   wallColor: "#2e302f",
   isFullTexture: true,
-  fullDecal: "./threejs.png",
+  artTexture1: "./threejs.png",
+  artTexture4: "./threejs.png",
+  artTexture7: "./threejs.png",
+  artTextureBlank: "./threejs.png",
 
 });
 
